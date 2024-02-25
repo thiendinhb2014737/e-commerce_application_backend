@@ -1,7 +1,7 @@
 const Router = require('express');
 const {
     register,
-    // 	login,
+    login,
     // 	verification,
     // 	forgotPassword,
     // 	handleLoginWithGoogle,
@@ -11,7 +11,7 @@ const authRouter = Router();
 
 
 authRouter.post('/register', register);
-// authRouter.post('/login', login);
+authRouter.post('/login', login);
 // authRouter.post('/verification', verification);
 // authRouter.post('/forgotPassword', forgotPassword);
 // authRouter.post('/google-signin', handleLoginWithGoogle);
