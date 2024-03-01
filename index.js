@@ -3,6 +3,7 @@ const cors = require("cors");
 const authRouter = require("./src/routers/authRouter");
 const connectDb = require("./src/configs/connectDb");
 const errorMiddleHandle = require("./src/middlewares/errorMiddleware");
+const productRouter = require("./src/routers/productRouter");
 
 require('dotenv').config()
 
@@ -15,6 +16,7 @@ app.use(express.json())
 const PORT = 3002
 
 app.use('/auth', authRouter)
+app.use('/product', productRouter)
 
 
 connectDb();
