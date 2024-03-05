@@ -109,10 +109,40 @@ const getAllProduct = async (req, res) => {
         }
     })
 }
+const getDetailsProduct = async (req, res) => {
+    const productId = req.params.id
+    return new Promise(async (resolve, reject) => {
+
+        try {
+            // Check email có tồn tại trong database không
+            const product = await ProductModel.findOne({
+                _id: productId
+            })
+
+            if (product === null) {
+                res.status(200).json({
+                    status: 'OK',
+                    message: 'The product is not defined!',
+                })
+            }
+
+            res.status(200).json({
+                status: 'OK',
+                message: 'SUCCESS!',
+                data: product
+            })
+
+
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 
 
 
 module.exports = {
     getAllType,
-    getAllProduct
+    getAllProduct,
+    getDetailsProduct
 }
