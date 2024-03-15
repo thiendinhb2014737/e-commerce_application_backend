@@ -36,7 +36,7 @@ const getAllProduct = async (req, res) => {
             let allProduct = []
 
             if (filter && limit && sort) {
-                if (filter[0] === 'type' && limit && sort || filter[0] === 'name' && limit && sort) {
+                if (filter[0] === 'type' && limit && sort || filter[0] === 'name' && limit && sort || filter[0] === 'gender' && limit && sort) {
                     const label = filter[0]
                     const objectSort = {}
                     objectSort[sort[1]] = sort[0]
