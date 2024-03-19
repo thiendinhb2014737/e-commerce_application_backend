@@ -69,7 +69,7 @@ const verification = asyncHandle(async (req, res) => {
 
 
 const register = asyncHandle(async (req, res) => {
-    const { email, name, password, createOrderdAt } = req.body
+    const { email, name, password, createUserdAt } = req.body
 
     // timf trong database xem cos nguoi dung nay chua
     const existingUser = await UserModel.findOne({ email })
@@ -85,7 +85,7 @@ const register = asyncHandle(async (req, res) => {
         email,
         name: name ?? "",
         password: hashedPassword,
-        createOrderdAt
+        createUserdAt
 
     })
     await newUser.save()

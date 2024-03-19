@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema(
         phone: { type: Number },
         address: { type: String },
         avatar: { type: String },
-        createOrderdAt: { type: String }
+        createUserdAt: { type: String }
     },
     {
         timestamps: true // Thời gian tạo và update
