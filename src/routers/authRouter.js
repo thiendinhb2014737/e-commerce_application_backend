@@ -20,4 +20,5 @@ authRouter.get('/get-details/:id', getDetailsUser)
 authRouter.put('/update-user/:id', updateUser)
 // authRouter.post('/google-signin', handleLoginWithGoogle);
 
+
 module.exports = authRouter;
