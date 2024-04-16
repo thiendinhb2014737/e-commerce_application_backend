@@ -6,8 +6,8 @@ const errorMiddleHandle = require("./src/middlewares/errorMiddleware");
 const productRouter = require("./src/routers/productRouter");
 const orderRouter = require("./src/routers/orderRouter");
 const paymentRouter = require("./src/routers/paymentRouter");
-const eventRouter = require("./src/routers/EventRouter");
-
+const eventRouter = require("./src/routers/eventRouter");
+const contactRouter = require("./src/routers/contactRouter");
 require('dotenv').config()
 
 const app = express()
@@ -24,6 +24,7 @@ app.use('/auth', authRouter)
 app.use('/product', productRouter)
 app.use('/order', orderRouter)
 app.use('/event', eventRouter)
+app.use('/contact', contactRouter)
 app.use('/payment', paymentRouter)
 
 
