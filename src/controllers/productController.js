@@ -138,11 +138,56 @@ const getDetailsProduct = async (req, res) => {
         }
     })
 }
+const evaluate = async (req, res) => {
 
+    const productId = req.params.id
+    const data = req.body
+    console.log('productId', productId)
+    return new Promise(async (resolve, reject) => {
+        console.log('data rating is...', data.rating)
+        try {
+            // Check email có tồn tại trong database không
+            const checkProduct = await ProductModel.findOne({
+                _id: productId
+            })
+            console.log('rating of Pro is...', checkProduct.rating)
+            if (checkProduct === null) {
+                res.status(200).json({
+                    status: 'OK',
+                    message: 'The product is not defined!',
+                })
+            }
+            if (checkProduct.rating === 0) {
+                const newRating = (data.rating + checkProduct.rating)
+                console.log('the new rating is...:', newRating)
+                const updatedProduct = await ProductModel.findByIdAndUpdate(productId, { rating: newRating }, { new: true })
+
+                res.status(200).json({
+                    status: 'OK',
+                    message: 'SUCCESS!',
+                    data: updatedProduct
+                })
+            } else {
+                const newRating = (data.rating + checkProduct.rating) / 2
+                console.log('the new rating is...', newRating)
+                const updatedProduct = await ProductModel.findByIdAndUpdate(productId, { rating: newRating }, { new: true })
+
+                res.status(200).json({
+                    status: 'OK',
+                    message: 'SUCCESS!',
+                    data: updatedProduct
+                })
+            }
+        } catch (e) {
+            reject(e)
+        }
+    })
+}
 
 
 module.exports = {
     getAllType,
     getAllProduct,
-    getDetailsProduct
+    getDetailsProduct,
+    evaluate
 }
